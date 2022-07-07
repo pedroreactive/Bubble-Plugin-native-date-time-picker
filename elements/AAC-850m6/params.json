@@ -2,13 +2,102 @@
     "add_is_visible": true,
     "can_fit_height": true,
     "can_fit_width": true,
-    "category": "visual elements",
+    "category": "input forms",
     "default_dim": {
         "height": 40,
-        "width": 150
+        "width": 180
     },
     "display": "native date picker",
-    "icon": "ion-android-checkbox-blank",
+    "events": {
+        "AAE": {
+            "caption": "date/time is selected",
+            "name": "dateready"
+        }
+    },
+    "fields": {
+        "AAF": {
+            "caption": "format",
+            "default_val": "date and time",
+            "doc": "month doesn't work correctly in Safari",
+            "editor": "Dropdown",
+            "name": "format",
+            "options": "date and time,date,time,month (see info)",
+            "rank": 0
+        },
+        "AAG": {
+            "caption": "initial date/time",
+            "doc": "initial date",
+            "editor": "DynamicValue",
+            "name": "initial",
+            "optional": true,
+            "rank": 4,
+            "value": "date"
+        },
+        "AAI": {
+            "caption": "step",
+            "doc": "step in seconds when format is time or date and time, in days when format is date and months when format is month",
+            "editor": "DynamicValue",
+            "name": "step",
+            "optional": true,
+            "rank": 1,
+            "value": "number"
+        },
+        "AAJ": {
+            "caption": "min",
+            "default_val": "",
+            "doc": "minimum time/date/date and time or month, format for time: 11:00, for date: 2022-11-25, for date and time: 2022-11-25T15:00, for month 2022-11  (some browsers don't support)",
+            "editor": "DynamicValue",
+            "name": "min",
+            "optional": true,
+            "rank": 2,
+            "value": "text"
+        },
+        "AAK": {
+            "caption": "max",
+            "doc": "maximum time/date/date and time or month, format for time: 11:00, for date: 2022-11-25, for date and time: 2022-11-25T15:00, for month 2022-11 (some browsers don't support)",
+            "editor": "DynamicValue",
+            "name": "max",
+            "optional": true,
+            "rank": 3,
+            "value": "text"
+        },
+        "AAN": {
+            "caption": "color scheme",
+            "default_val": "normal",
+            "doc": "color scheme to show date picker and his icon for supported browsers",
+            "editor": "Dropdown",
+            "name": "colorscheme",
+            "optional": true,
+            "options": "normal,dark,light,revert",
+            "rank": 5
+        },
+        "AAP": {
+            "caption": "center vertically",
+            "default_val": false,
+            "doc": "horizontal & vertical align input to the center",
+            "editor": "Checkbox",
+            "name": "vcenter",
+            "rank": 6
+        },
+        "AAQ": {
+            "caption": "fit width to content",
+            "default_val": true,
+            "doc": "set to false (uncheck) if needed to span to 100% width of parent's element",
+            "editor": "Checkbox",
+            "name": "fitwidth",
+            "rank": 7
+        },
+        "AAR": {
+            "caption": "fit height to content",
+            "default_val": true,
+            "doc": "set to false (uncheck) if needed to span to 100% height of parent's element",
+            "editor": "Checkbox",
+            "name": "fitheight",
+            "rank": 8
+        }
+    },
+    "has_reset_fn": true,
+    "icon": "ion-android-time",
     "property_applications": {
         "Background": true,
         "Border": true,
@@ -21,11 +110,20 @@
     "states": {
         "AAD": {
             "caption": "date",
+            "doc": "",
             "initialization_code": {
-                "fn": "function(properties, context) {\n\n\n\n}"
+                "fn": "function(properties, context) {\n\n\n}"
             },
             "name": "date",
             "value": "date"
+        },
+        "AAH": {
+            "caption": "date_string",
+            "initialization_code": {
+                "fn": "function(properties, context) {\n\n\n\n}"
+            },
+            "name": "date_string",
+            "value": "text"
         }
     }
 }

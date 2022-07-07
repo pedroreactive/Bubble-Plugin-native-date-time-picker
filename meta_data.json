@@ -2,7 +2,11 @@
     "categories": {
         "0": "technical"
     },
-    "image": "//s3.amazonaws.com/appforest_uf/f1531455189113x959372189361602000/Bubble%20Icon.png",
+    "demo_page": "https://testliveversion.bubbleapps.io/datetimepicker",
+    "description": "This small and fast plugin allows you to use the native browser's date picker without using any external libraries.\n\nGreat option to mobile apps — it calls native date/time picker so familiar to iOS/Android platform users.\n\nThere are a lot of useful customization options:\n1. Picker format: date, time, date+time and month.\n2. Step to select dates.\n3. Min and max values.\n4. Initial date/time.\n5. Color scheme for clock/calendar icon and dropdown date picker.\n6. Center vertically for use with a large height size.\n7. Fit width and height to content (currently, Bubble bug doesn't allow to use it's native settings).\n8. Font styling: selecting colors, weight, size and other style settings.\n9. Background styling: colors, gradients, images.\n10. Borders styling, including roundness.\n11. Paddings. \n\nAfter a date is selected, date picker will have a state with selected date in date format as well as a string, the \"date/time is selected\" event will also be fired.\n\nIt's possible to use an action \"setdate\" to set custom date/time with ability to select if event needs to be fired. \n\nSome browsers don't support all features, for example, Safari doesn't support format \"month\", see more: https://caniuse.com/input-datetime\n\nAlso please note that each browser renders this element differently, so test carefully.\n\nThe plugin was created for the new responsive engine so not sure if it correctly works with old responsive.\n\nYou can find run version here: https://testliveversion.bubbleapps.io/datetimepicker\n\nEdit mode link:\nhttps://bubble.io/page?type=page&name=datetimepicker&version=live&id=testliveversion\n\nThe plugin is distributed \"as is\".\n\nYou can request changes or feature additions by email to support@kursin.com, but since the plugin is free, I can't promise I can help, but I'll try.\n",
+    "image": "//s3.amazonaws.com/appforest_uf/f1657196820416x921235399846711800/SCR-20220707-k26.png",
     "license": "private",
-    "name": "native date time picker"
+    "link": "https://testliveversion.bubbleapps.io/datetimepicker",
+    "name": "native date picker",
+    "plugin_instructions": "Place a native date picker element on the page, setup all needed values and use.\n\nBe sure to test it in all required browsers/platforms."
 }

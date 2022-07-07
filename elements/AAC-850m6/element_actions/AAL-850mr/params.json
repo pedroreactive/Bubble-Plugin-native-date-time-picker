@@ -1,0 +1,23 @@
+{
+    "caption": "setdate",
+    "doc": "set date to date picker",
+    "fields": {
+        "AAM": {
+            "caption": "date",
+            "doc": "",
+            "editor": "DynamicValue",
+            "name": "date",
+            "rank": 0,
+            "value": "date"
+        },
+        "AAO": {
+            "caption": "trigger event after set",
+            "default_val": false,
+            "editor": "DynamicValue",
+            "name": "triggerevent",
+            "optional": true,
+            "rank": 1,
+            "value": "boolean"
+        }
+    }
+}
