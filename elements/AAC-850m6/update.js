@@ -5,6 +5,8 @@ function(instance, properties, context) {
     instance.data.fontweight = properties.bubble.font_face().split(':')[3];
     instance.data.borderwidth = properties.bubble.border_width() + "px";
     instance.data.borderstyle = properties.bubble.border_style();
+    instance.data.disabled = properties.disabled;
+
 //    instance.data.bgcolor = properties.bubble.bgcolor();
 
 	    if (properties.fitwidth) {
@@ -35,11 +37,13 @@ function(instance, properties, context) {
     }
 
     if (properties.min) {
-    instance.data.min = properties.min
+    	instance.data.min = properties.min;
+        instance.publishState("min", properties.min);
     }
 
     if (properties.max) {
-    instance.data.max = properties.max
+    	instance.data.max = properties.max;
+       	instance.publishState("max", properties.max);
     }
 
     
@@ -60,7 +64,11 @@ function(instance, properties, context) {
     if (properties.initial) {
 //        const value = new Date(properties.initial);
 //        instance.data.initialdate = value.toString();
-        instance.data.initialdate = properties.initial
+        
+        instance.data.initialdate = properties.initial;
+        
     }
+    
+
 
 }

@@ -5,11 +5,16 @@ function(instance, context) {
 
     $(document).ready(function () {
 
-        var myDiv = '<input id="' + instance.data.inputid + '" type=' + instance.data.format + ' style="color-scheme:' + instance.data.colorscheme + '; border-width: 0; padding: 0; margin: 0; font-size: inherit; font-family: inherit; font-weight: inherit; background-color: transparent; color: inherit; font-style: inherit; text-decoration: inherit; text-align: inherit;">';
+        var myDiv = '<input id="' + instance.data.inputid + '" type=' + instance.data.format + ' style="color-scheme:' + instance.data.colorscheme + '; border-width: 0; padding: 0; margin: 0; font-size: inherit; font-family: inherit; font-weight: inherit; background-color: rgba(255,255,255,0.01); color: inherit; font-style: inherit; text-decoration: inherit; text-align: inherit;">';
 
         instance.canvas.append(myDiv);
 
         const canvas = instance.canvas;
+        
+        var d = new Date();
+        
+        instance.publishState("offset", d.getTimezoneOffset());
+
         
         if (instance.data.fitwidthtocontent == true) {
             canvas.css("width", "max-content")
@@ -53,6 +58,10 @@ function(instance, context) {
                 ].join(':')
             );
         }
+        
+        if (instance.data.disabled) {
+            input.disabled = true;
+        }
 
         if (instance.data.initialdate && instance.data.format == "date") {
 
@@ -82,9 +91,6 @@ function(instance, context) {
 
         }
 
-
-
-
         if (instance.data.step) {
             input.step = instance.data.step
         }
@@ -100,7 +106,18 @@ function(instance, context) {
 
         input.addEventListener('input', function (evt) {
             
+             if (!this.value) {
+                 instance.triggerEvent('reset');
+             }
+            
             if (this.value) {
+
+                if (instance.data.disabled) {
+                    this.disabled = true;
+                }
+                else {
+                    this.disabled = false;
+                }
 
             if (instance.data.format == 'time') {
 
@@ -119,6 +136,15 @@ function(instance, context) {
                 instance.publishState("date", b);
                 instance.publishState("date_string", b.toString());
                 instance.triggerEvent('dateready');
+
+                if (this.checkValidity()) {
+                    instance.publishState("valid", true);
+                        }
+                else {
+                    instance.publishState("valid", false)
+                    instance.triggerEvent('invalid');
+                    }
+                
             } else {
                 instance.publishState("date", this.value);
                 instance.publishState("date_string", this.value.toString());

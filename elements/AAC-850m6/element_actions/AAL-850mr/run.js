@@ -3,6 +3,14 @@ function(instance, properties, context) {
     
         var input = document.getElementById(instance.data.inputid);
     
+    			if (instance.data.disabled) {
+                    input.disabled = true;
+                }
+                else {
+                    input.disabled = false;
+                }
+    
+
     
     			function padTo2Digits(num) {
                   return num.toString().padStart(2, '0');
@@ -56,6 +64,14 @@ function(instance, properties, context) {
                 const [date, time] = formatDate(new Date(properties.date)).split(' ');
 
 	            input.value = time;
+                
+                if (input.checkValidity()) {
+                	instance.publishState("valid", true);
+                }
+                else {
+                    instance.publishState("valid", false)
+                }
+
 
                 var a = time
                 var b = toDate(a)

@@ -12,6 +12,14 @@
         "AAE": {
             "caption": "date/time is selected",
             "name": "dateready"
+        },
+        "AAW": {
+            "caption": "invalid",
+            "name": "invalid"
+        },
+        "AAY": {
+            "caption": "reset",
+            "name": "reset"
         }
     },
     "fields": {
@@ -94,6 +102,14 @@
             "editor": "Checkbox",
             "name": "fitheight",
             "rank": 8
+        },
+        "AAV": {
+            "caption": "disabled",
+            "default_val": false,
+            "editor": "DynamicValue",
+            "name": "disabled",
+            "rank": 9,
+            "value": "boolean"
         }
     },
     "has_reset_fn": true,
@@ -124,6 +140,38 @@
             },
             "name": "date_string",
             "value": "text"
+        },
+        "AAS": {
+            "caption": "min",
+            "initialization_code": {
+                "fn": "function(properties, context) {\n\n\n\n}"
+            },
+            "name": "min",
+            "value": "text"
+        },
+        "AAT": {
+            "caption": "max",
+            "initialization_code": {
+                "fn": "function(properties, context) {\n\n\n\n}"
+            },
+            "name": "max",
+            "value": "text"
+        },
+        "AAU": {
+            "caption": "valid",
+            "initialization_code": {
+                "fn": "function(properties, context) {\n\n     return true;\n\n}"
+            },
+            "name": "valid",
+            "value": "boolean"
+        },
+        "AAX": {
+            "caption": "offset",
+            "initialization_code": {
+                "fn": "function(properties, context) {\n\n\n\n}"
+            },
+            "name": "offset",
+            "value": "number"
         }
     }
 }
