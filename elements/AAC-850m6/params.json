@@ -20,6 +20,22 @@
         "AAY": {
             "caption": "reset",
             "name": "reset"
+        },
+        "AAb": {
+            "caption": "is focused",
+            "name": "focused"
+        },
+        "AAc": {
+            "caption": "is blurred",
+            "name": "blurred"
+        },
+        "AAd": {
+            "caption": "value is changed",
+            "name": "value_changed"
+        },
+        "AAe": {
+            "caption": "is invalid",
+            "name": "invalid"
         }
     },
     "fields": {
@@ -77,7 +93,7 @@
             "name": "colorscheme",
             "optional": true,
             "options": "normal,dark,light,revert",
-            "rank": 5
+            "rank": 7
         },
         "AAP": {
             "caption": "center vertically",
@@ -85,7 +101,7 @@
             "doc": "horizontal & vertical align input to the center",
             "editor": "Checkbox",
             "name": "vcenter",
-            "rank": 6
+            "rank": 8
         },
         "AAQ": {
             "caption": "fit width to content",
@@ -93,7 +109,7 @@
             "doc": "set to false (uncheck) if needed to span to 100% width of parent's element",
             "editor": "Checkbox",
             "name": "fitwidth",
-            "rank": 7
+            "rank": 9
         },
         "AAR": {
             "caption": "fit height to content",
@@ -101,15 +117,22 @@
             "doc": "set to false (uncheck) if needed to span to 100% height of parent's element",
             "editor": "Checkbox",
             "name": "fitheight",
-            "rank": 8
+            "rank": 10
         },
         "AAV": {
             "caption": "disabled",
             "default_val": false,
             "editor": "DynamicValue",
             "name": "disabled",
-            "rank": 9,
+            "rank": 5,
             "value": "boolean"
+        },
+        "AAg": {
+            "caption": "required",
+            "default_val": false,
+            "editor": "Checkbox",
+            "name": "required",
+            "rank": 6
         }
     },
     "has_reset_fn": true,
@@ -158,7 +181,7 @@
             "value": "text"
         },
         "AAU": {
-            "caption": "valid",
+            "caption": "is valid",
             "initialization_code": {
                 "fn": "function(properties, context) {\n\n     return true;\n\n}"
             },
@@ -172,6 +195,14 @@
             },
             "name": "offset",
             "value": "number"
+        },
+        "AAa": {
+            "caption": "is focused",
+            "initialization_code": {
+                "fn": "function(properties, context) {\n\n\n\n}"
+            },
+            "name": "is_focused",
+            "value": "boolean"
         }
     }
 }

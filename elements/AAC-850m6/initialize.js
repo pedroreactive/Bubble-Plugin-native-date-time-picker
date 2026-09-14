@@ -1,4 +1,6 @@
 function(instance, context) {
+  
+    instance.publishState("is_focused", false);
 
     instance.data.divid = "datetimediv" + Math.floor(Math.random() * 1000000).toString();
     instance.data.inputid = "datetimeinput" + Math.floor(Math.random() * 1000000).toString();
@@ -40,6 +42,32 @@ function(instance, context) {
 
         var input = document.getElementById(instance.data.inputid);
 
+        input.required = instance.data.required === true;
+
+        input.addEventListener("focus", function () {
+            instance.data.valueOnFocus = this.value;
+
+            instance.publishState("is_focused", true);
+            instance.triggerEvent("focused");
+        });
+
+        input.addEventListener("blur", function () {
+            const valueChanged =
+                this.value !== instance.data.valueOnFocus;
+
+            const isValid = this.checkValidity();
+
+            instance.publishState("is_focused", false);
+            instance.publishState("valid", isValid);
+
+            if (!isValid) {
+                instance.triggerEvent("invalid");
+            }
+
+            instance.triggerEvent("blurred");
+        });
+              
+
         function padTo2Digits(num) {
             return num.toString().padStart(2, '0');
         }
@@ -64,12 +92,16 @@ function(instance, context) {
         }
 
         if (instance.data.initialdate && instance.data.format == "date") {
-
-            input.value = new Date(instance.data.initialdate).toISOString().split('T')[0];
-            instance.publishState("date", input.value);
-            instance.publishState("date_string", input.value.toString());
-
-        } else if (instance.data.initialdate && instance.data.format == "month") {
+    const date = new Date(instance.data.initialdate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const localDateString = `${year}-${month}-${day}`;
+    
+    input.value = localDateString;
+    instance.publishState("date", input.value);
+    instance.publishState("date_string", input.value.toString());
+} else if (instance.data.initialdate && instance.data.format == "month") {
 
             var month = new Date(instance.data.initialdate).toISOString().split('T')[0];
             input.value = month.slice(0, -3);
@@ -102,6 +134,8 @@ function(instance, context) {
         if (instance.data.max) {
             input.max = instance.data.max
         }
+        
+        instance.publishState("valid", input.checkValidity());
 
 
         input.addEventListener('input', function (evt) {
