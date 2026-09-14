@@ -14,7 +14,7 @@
             "name": "dateready"
         },
         "AAW": {
-            "caption": "invalid",
+            "caption": "is invalid",
             "name": "invalid"
         },
         "AAY": {
@@ -32,10 +32,6 @@
         "AAd": {
             "caption": "value is changed",
             "name": "value_changed"
-        },
-        "AAe": {
-            "caption": "is invalid",
-            "name": "invalid"
         }
     },
     "fields": {

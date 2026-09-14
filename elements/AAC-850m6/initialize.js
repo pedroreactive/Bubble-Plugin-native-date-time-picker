@@ -51,21 +51,25 @@ function(instance, context) {
             instance.triggerEvent("focused");
         });
 
-        input.addEventListener("blur", function () {
-            const valueChanged =
-                this.value !== instance.data.valueOnFocus;
+input.addEventListener("blur", function () {
+    const valueChanged =
+        this.value !== instance.data.valueOnFocus;
 
-            const isValid = this.checkValidity();
+    const isValid = this.checkValidity();
 
-            instance.publishState("is_focused", false);
-            instance.publishState("valid", isValid);
+    instance.publishState("is_focused", false);
+    instance.publishState("valid", isValid);
 
-            if (!isValid) {
-                instance.triggerEvent("invalid");
-            }
+    if (valueChanged) {
+        instance.triggerEvent("value_changed");
+    }
 
-            instance.triggerEvent("blurred");
-        });
+    if (!isValid) {
+        instance.triggerEvent("invalid");
+    }
+
+    instance.triggerEvent("blurred");
+});
               
 
         function padTo2Digits(num) {
